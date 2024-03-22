@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint:recommended", "prettier", "react-app", "react-app/jest"],
+  "extends": ["eslint:recommended", "prettier", "react-app", "react-app/jest", "plugin:prettier/recommended"],
   "plugins": ["prettier"],
   "rules": {
     "camelcase": ["error", { "properties": "never" }],
