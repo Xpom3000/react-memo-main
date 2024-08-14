@@ -15,7 +15,12 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
 
   return (
     <div className={styles.modal}>
-      <img className={styles.image} src={imgSrc} alt={imgAlt} />
+      <div className={styles.header}>
+        <img className={styles.image} src={imgSrc} alt={imgAlt} />
+        <Link to="/">
+          <span className={styles.link}>X</span>
+        </Link>
+      </div>
       <h2 className={styles.title}>{title}</h2>
       <p className={styles.description}>Затраченное время:</p>
       <div className={styles.time}>
@@ -23,9 +28,6 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
       </div>
 
       <Button onClick={onClick}>Начать сначала</Button>
-      <Link to="/">
-        <Button>Вернуться к выбору сложности</Button>
-      </Link>
     </div>
   );
 }
