@@ -1,10 +1,12 @@
 import { shuffle } from "lodash";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { generateDeck } from "../../utils/cards";
 import styles from "./Cards.module.css";
 import { EndGameModal } from "../../components/EndGameModal/EndGameModal";
 import { Button } from "../../components/Button/Button";
 import { Card } from "../../components/Card/Card";
+import { ModeContext } from "../../context/ModeContext";
+import superAlohomora from "./superAlohomora.png";
 
 // Игра закончилась
 const STATUS_LOST = "STATUS_LOST";
@@ -40,18 +42,16 @@ function getTimerValue(startDate, endDate) {
  * pairsCount - сколько пар будет в игре
  * previewSeconds - сколько секунд пользователь будет видеть все карты открытыми до начала игры
  */
-export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
-  // В cards лежит игровое поле - массив карт и их состояние открыта\закрыта
-  const [cards, setCards] = useState([]);
-  // Текущий статус игры
-  const [status, setStatus] = useState(STATUS_PREVIEW);
 
-  // Дата начала игры
+export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
+  const { isEnabled } = useContext(ModeContext);
+  const [cards, setCards] = useState([]);
+  const [status, setStatus] = useState(STATUS_PREVIEW);
+  const [achievements, setAchievements] = useState([1, 2]);
+
   const [gameStartDate, setGameStartDate] = useState(null);
-  // Дата конца игры
   const [gameEndDate, setGameEndDate] = useState(null);
 
-  // Стейт для таймера, высчитывается в setInteval на основе gameStartDate и gameEndDate
   const [timer, setTimer] = useState({
     seconds: 0,
     minutes: 0,
@@ -73,7 +73,20 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
     setGameEndDate(null);
     setTimer(getTimerValue(null, null));
     setStatus(STATUS_PREVIEW);
+
+    setAttempts(isEnabled ? 3 : 1);
   }
+
+  // Состояние для количества попыток в начале игры
+  const maxAttempts = isEnabled ? 3 : 1;
+  const [attempts, setAttempts] = useState(maxAttempts);
+  const handleAttempts = e => {
+    e--;
+    setAttempts(e);
+    if (e <= 0) {
+      finishGame(STATUS_LOST);
+    }
+  };
 
   /**
    * Обработка основного действия в игре - открытие карты.
@@ -82,6 +95,24 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
    * - "Игрок проиграл", если на поле есть две открытые карты без пары
    * - "Игра продолжается", если не случилось первых двух условий
    */
+  function alohomora() {
+    if (!achievements.includes(2)) {
+      alert("Подсказкой можно воспользоваться только 1 раз");
+      return;
+    }
+    let closedCards = cards.filter(card => !card.open);
+    closedCards = shuffle(closedCards);
+    closedCards[0].open = true;
+    closedCards.forEach(card => {
+      if (card.suit === closedCards[0].suit && card.rank === closedCards[0].rank) {
+        card.open = true;
+        if (!closedCards.some(el => el.open === false)) finishGame(STATUS_WON);
+        return closedCards;
+      }
+    });
+    setAchievements(prev => prev.filter(item => item !== 2));
+  }
+
   const openCard = clickedCard => {
     // Если карта уже открыта, то ничего не делаем
     if (clickedCard.open) {
@@ -92,7 +123,6 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
       if (card.id !== clickedCard.id) {
         return card;
       }
-
       return {
         ...card,
         open: true,
@@ -108,7 +138,6 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
       finishGame(STATUS_WON);
       return;
     }
-
     // Открытые карты на игровом поле
     const openCards = nextCards.filter(card => card.open);
 
@@ -123,14 +152,22 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
       return false;
     });
 
-    const playerLost = openCardsWithoutPair.length >= 2;
+    // Потеря попыток
+    const pickedWrong = openCardsWithoutPair.length >= 2;
+    if (pickedWrong) {
+      handleAttempts(attempts);
 
-    // "Игрок проиграл", т.к на поле есть две открытые карты без пары
-    if (playerLost) {
-      finishGame(STATUS_LOST);
+      if (isEnabled) {
+        setTimeout(() => {
+          const resetCards = nextCards.map(card => ({
+            ...card,
+            open: false,
+          }));
+          setCards(resetCards);
+        }, 1000);
+      }
       return;
     }
-
     // ... игра продолжается
   };
 
@@ -195,7 +232,16 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
             </>
           )}
         </div>
-        {status === STATUS_IN_PROGRESS ? <Button onClick={resetGame}>Начать заново</Button> : null}
+        {status === STATUS_IN_PROGRESS ? (
+          <div className={styles.imgSuper}>
+            <img onClick={alohomora} src={superAlohomora} alt="super" />
+          </div>
+        ) : null}
+        {status === STATUS_IN_PROGRESS ? (
+          <div className={styles.div}>
+            <Button onClick={resetGame}>Начать заново</Button>
+          </div>
+        ) : null}
       </div>
 
       <div className={styles.cards}>
@@ -208,6 +254,16 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
             rank={card.rank}
           />
         ))}
+      </div>
+      <div className={styles.attempts_wrapper}>
+        {isEnabled ? <p className={styles.attempts_txt}>Попытки: </p> : ""}
+        {isEnabled ? (
+          <p className={styles.attempts_counter}>
+            {attempts} из {maxAttempts}
+          </p>
+        ) : (
+          ""
+        )}
       </div>
 
       {isGameEnded ? (

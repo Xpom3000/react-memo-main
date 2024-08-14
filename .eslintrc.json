@@ -3,12 +3,7 @@
   "plugins": ["prettier"],
   "rules": {
     "camelcase": ["error", { "properties": "never" }],
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ],
+    "prettier/prettier": "error",
     "eqeqeq": ["error", "always"],
     "no-unused-vars": ["error"]
   }

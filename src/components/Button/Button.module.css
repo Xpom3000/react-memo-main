@@ -1,6 +1,6 @@
 .button {
   width: 246px;
-  height: 48px;
+  height: 62px;
 
   border-radius: 12px;
   background: #7ac100;
@@ -11,14 +11,15 @@
 
   /* Pres → Caption S */
   font-family: StratosSkyeng;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: 32px; /* 133.333% */
 
   border: none;
-
   cursor: pointer;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .button:hover {
