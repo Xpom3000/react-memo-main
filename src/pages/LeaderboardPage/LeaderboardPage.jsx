@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useEffect, useState } from "react";
 import styles from "./LeaderboardPage.module.css";
 import { getLeaderboard } from "../../api";

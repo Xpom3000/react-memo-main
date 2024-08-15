@@ -37,12 +37,6 @@ function getTimerValue(startDate, endDate) {
   };
 }
 
-/**
- * Основной компонент игры, внутри него находится вся игровая механика и логика.
- * pairsCount - сколько пар будет в игре
- * previewSeconds - сколько секунд пользователь будет видеть все карты открытыми до начала игры
- */
-
 export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
   const { isEnabled } = useContext(ModeContext);
   const [cards, setCards] = useState([]);
@@ -88,13 +82,6 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
     }
   };
 
-  /**
-   * Обработка основного действия в игре - открытие карты.
-   * После открытия карты игра может пепереходит в следующие состояния
-   * - "Игрок выиграл", если на поле открыты все карты
-   * - "Игрок проиграл", если на поле есть две открытые карты без пары
-   * - "Игра продолжается", если не случилось первых двух условий
-   */
   function alohomora() {
     if (!achievements.includes(2)) {
       alert("Подсказкой можно воспользоваться только 1 раз");
