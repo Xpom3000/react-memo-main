@@ -88,13 +88,11 @@
   justify-content: center;
 }
 
-/* Контейнер подсказок */
 .tooltip {
   position: relative;
   display: inline-block;
 }
 
-/* Текст подсказки */
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 174px;
@@ -104,20 +102,15 @@
   padding: 15px 20px 24px;
   border-radius: 12px;
   background-color: #C2F5FF;
-
-  /* Расположите текст подсказки */
   position: absolute;
   z-index: 1;
   bottom: 125%;
   left: 50%;
   margin-left: -15px;
-
-  /* Исчезают в подсказке */
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-/* Подсказка стрелка */
 .tooltip .tooltiptext::after {
   content: "";
   position: absolute;
@@ -130,7 +123,6 @@
   rotate: 135deg;
 }
 
-/* Отображение текста подсказки при наведении курсора мыши на контейнер подсказки */
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
