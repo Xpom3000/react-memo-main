@@ -53,7 +53,7 @@ export function SelectLevelPage() {
           <input type="checkbox" checked={isEnabled} onChange={() => setIsEnabled(!isEnabled)} />
           <span className={styles.span}>Легкий режим (3 жизни)</span>
         </div>
-        <Button onClick={handleClickStart}>Играть</Button>
+        {level === null ? <button disabled>Играть</button> : <Button onClick={handleClickStart}>Играть</Button>}
         <Link className={styles.leaderboard} to="/game/leaderboard">
           Перейти к лидерборду
         </Link>

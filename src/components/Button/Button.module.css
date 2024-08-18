@@ -1,6 +1,6 @@
 .button {
   width: 246px;
-  height: 62px;
+  height: 48px;
 
   border-radius: 12px;
   background: #7ac100;
@@ -11,7 +11,7 @@
 
   /* Pres → Caption S */
   font-family: StratosSkyeng;
-  font-size: 20px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 400;
   line-height: 32px; /* 133.333% */

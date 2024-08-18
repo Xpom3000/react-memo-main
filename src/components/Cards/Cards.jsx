@@ -208,12 +208,12 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
           ) : (
             <>
               <div className={styles.timerValue}>
-                <div className={styles.timerDescription}>min</div>
+                <div className={styles.timerDescription}>мин</div>
                 <div>{timer.minutes.toString().padStart("2", "0")}</div>
               </div>
               .
               <div className={styles.timerValue}>
-                <div className={styles.timerDescription}>sec</div>
+                <div className={styles.timerDescription}>сек</div>
                 <div>{timer.seconds.toString().padStart("2", "0")}</div>
               </div>
             </>
