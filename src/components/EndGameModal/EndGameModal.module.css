@@ -9,19 +9,23 @@
   align-items: center;
 }
 
-/* .header{
+ .header{
   display: flex;
-} */
+ }
 
 .link {
   position: absolute;
-  top: 160px;
-  right: 499px;
+  /* top: 160px; */
+  right: 29%;
   color: #000000;
+  font-weight: 700;
+  font-size: larger;
   cursor: pointer;
+  text-decoration: none;
 }
 link:hover {
   color: #000000;
+  
 }
 
 .image {
