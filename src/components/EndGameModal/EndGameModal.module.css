@@ -1,6 +1,7 @@
 .modal {
   width: 480px;
-  height: 459px;
+  /* padding-top: 36px; */
+  padding-bottom: 48px;
   border-radius: 12px;
   background: #c2f5ff;
   display: flex;
@@ -8,37 +9,44 @@
   justify-content: center;
   align-items: center;
 }
-.modalLeader {
-  width: 480px;
-  height: 550px;
+.buttonHome {
+  position: relative;
+  /* top: -30px; */
+  left: 225px;
   border-radius: 12px;
-  background: #c2f5ff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.header {
-  display: flex;
-}
-
-.link {
-  position: absolute;
-  top: 160px;
-  right: 499px;
-  color: #000000;
+  background: transparent;
+  color: black;
+  text-align: center;
+  font-feature-settings: lining-nums proportional-nums;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  border: none;
   cursor: pointer;
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 26px;
+  height: 38px;
 }
-link:hover {
-  color: #000000;
-}
+
 
 .image {
   width: 96px;
   height: 96px;
   margin-bottom: 8px;
+}
+
+.link {
+  position: absolute;
+  top: 115px;
+  right: 575px;
+  color: #000000;
+  cursor: pointer;
+}
+link:hover {
+  color: #000000;
 }
 
 .title {
@@ -49,38 +57,9 @@ link:hover {
   font-style: normal;
   font-weight: 400;
   line-height: 48px;
+  text-align: center;
+
   margin-bottom: 28px;
-}
-
-.inputText {
-  margin-bottom: 14px;
-  width: 246px;
-  height: 48px;
-
-  border: 1px solid #004980;
-  border-radius: 12px;
-  background: #fff;
-  text-align: center;
-
-  font-variant-numeric: lining-nums proportional-nums;
-  color: #004980;
-  font-family: StratosSkyeng;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 200;
-  text-align: center;
-}
-
-.inputText::placeholder {
-  color:dimgray;
-  font-family: StratosSkyeng;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 200;
-  text-align: center;
-}
-.inputText:focus {
-  border-color:#0082e6;
 }
 
 .description {
@@ -91,6 +70,7 @@ link:hover {
   font-style: normal;
   font-weight: 400;
   line-height: 32px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -101,6 +81,25 @@ link:hover {
   font-style: normal;
   font-weight: 400;
   line-height: 72px;
+  margin-bottom: 10px;
+}
 
-  margin-bottom: 40px;
+.leaderboard {
+  margin-top: 20px;
+  font-family: StratosSkyeng;
+  color: #0080c1;
+  font-size: 16px;
+}
+
+.inputLeaderName {
+  width: 276px;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  text-align: center;
+  font-family: StratosSkyeng;
+  font-weight: 400;
+  font-size: 24px;
+  /* color: #999999; */
 }

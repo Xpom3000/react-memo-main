@@ -63,6 +63,7 @@
 .levelText {
   position: relative;
   z-index: 1;
+  padding: 15px 30px;
 }
 
 .checked {

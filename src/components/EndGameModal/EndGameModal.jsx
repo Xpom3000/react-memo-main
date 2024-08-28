@@ -2,7 +2,7 @@ import styles from "./EndGameModal.module.css";
 import { Button } from "../Button/Button";
 import deadImageUrl from "./images/dead.png";
 import celebrationImageUrl from "./images/celebration.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { addLeader } from "../../api";
 
@@ -14,6 +14,12 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
   const imgAlt = isWon ? "celebration emodji" : "dead emodji";
 
   const [username, setUsername] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleClickHomepage = () => {
+    navigate(`/`);
+  };
 
   const handleUserNameChange = e => {
     setUsername(e.target.value);
@@ -36,17 +42,17 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
 
   return (
     <div className={styles.modal}>
+      <button className={styles.buttonHome} onClick={handleClickHomepage}>
+        X
+      </button>
       <img className={styles.image} src={imgSrc} alt={imgAlt} />
-      <Link to="/">
-        <span className={styles.link}>X</span>
-      </Link>
-      {cards.length === 6 && isWon ? (
+      {cards.length === 18 && isWon ? (
         <>
           <h2 className={styles.title}>Вы попали на Лидерборд!</h2>
           <input
             value={username}
             onChange={handleUserNameChange}
-            placeholder="Пользователь"
+            placeholder={"Введите ваше имя"}
             className={styles.inputLeaderName}
             type="text"
           />
@@ -65,7 +71,7 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
             Начать сначала
           </Button>
 
-          <Link className={styles.leaderboard} to="/leaderboard" onClick={PostNewLeader}>
+          <Link className={styles.leaderboard} to="/game/leaderboard" onClick={PostNewLeader}>
             Перейти к лидерборду
           </Link>
         </>

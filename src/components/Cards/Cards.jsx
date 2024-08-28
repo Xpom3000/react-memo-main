@@ -259,7 +259,9 @@ export function Cards({ pairsCount = 3, previewSeconds = 5 }) {
             isWon={status === STATUS_WON}
             gameDurationSeconds={timer.seconds}
             gameDurationMinutes={timer.minutes}
+            cards={cards}
             onClick={resetGame}
+            achievements={achievements}
           />
         </div>
       ) : null}
