@@ -22,28 +22,28 @@ export function SelectLevelPage() {
         <h1 className={styles.title}>Выберите сложность</h1>
         <ul className={styles.levels}>
           <li className={styles.level}>
-            <input type="radio" name="level" value="3" checked={level === "3"} onChange={() => {}} />
+            <input type="radio" name="level" value="3" checked={level === 3} onChange={() => {}} />
             <div
-              className={level === "3" ? `${styles.levelText} ${styles.checked}` : styles.levelText}
-              onClick={() => handleLevelClick("3")}
+              className={level === 3 ? `${styles.levelText} ${styles.checked}` : styles.levelText}
+              onClick={() => handleLevelClick(3)}
             >
               1
             </div>
           </li>
           <li className={styles.level}>
-            <input type="radio" name="level" value="6" checked={level === "6"} onChange={() => {}} />
+            <input type="radio" name="level" value="6" checked={level === 6} onChange={() => {}} />
             <div
-              className={level === "6" ? `${styles.levelText} ${styles.checked}` : styles.levelText}
-              onClick={() => handleLevelClick("6")}
+              className={level === 6 ? `${styles.levelText} ${styles.checked}` : styles.levelText}
+              onClick={() => handleLevelClick(6)}
             >
               2
             </div>
           </li>
           <li className={styles.level}>
-            <input type="radio" name="level" value="9" checked={level === "9"} onChange={() => {}} />
+            <input type="radio" name="level" value="9" checked={level === 9} onChange={() => {}} />
             <div
-              className={level === "9" ? `${styles.levelText} ${styles.checked}` : styles.levelText}
-              onClick={() => handleLevelClick("9")}
+              className={level === 9 ? `${styles.levelText} ${styles.checked}` : styles.levelText}
+              onClick={() => handleLevelClick(9)}
             >
               3
             </div>

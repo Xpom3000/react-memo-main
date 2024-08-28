@@ -3,29 +3,17 @@ import { Button } from "../Button/Button";
 import deadImageUrl from "./images/dead.png";
 import celebrationImageUrl from "./images/celebration.png";
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import { addLeader, getLeaderboard } from "../../api";
-import { ModeContext } from "../../context/ModeContext";
+import { useState } from "react";
+import { addLeader } from "../../api";
 
-export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, onClick, achievements }) {
-  const { level } = useContext(ModeContext);
-  const gameTime = gameDurationMinutes * 60 + gameDurationSeconds;
-  const [username, setUsername] = useState("Пользователь");
-  const [newLeader, setNewLeader] = useState(false);
+export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, onClick, cards, achievements }) {
+  const title = isWon ? "Вы победили!" : "Вы проиграли!";
 
-  useEffect(() => {
-    if (level === 9 && isWon) {
-      // если игрок выиграл 3 уровень сложности, получаем список лидеров
-      getLeaderboard().then(({ leaders }) => {
-        leaders = leaders.sort(function (a, b) {
-          return a.time - b.time;
-        });
-        if (leaders.length < 10 || gameTime < leaders[9].time) {
-          setNewLeader(true);
-        }
-      });
-    }
-  }, []);
+  const imgSrc = isWon ? celebrationImageUrl : deadImageUrl;
+
+  const imgAlt = isWon ? "celebration emodji" : "dead emodji";
+
+  const [username, setUsername] = useState("");
 
   const handleUserNameChange = e => {
     setUsername(e.target.value);
@@ -34,7 +22,7 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
   const PostNewLeader = async () => {
     const leader = {
       name: username,
-      time: gameTime,
+      time: gameDurationMinutes * 60 + gameDurationSeconds,
       achievements,
     };
 
@@ -46,20 +34,19 @@ export function EndGameModal({ isWon, gameDurationSeconds, gameDurationMinutes, 
     }
   };
 
-  const title = isWon ? "Вы победили!" : "Вы проиграли!";
-  const imgSrc = isWon ? celebrationImageUrl : deadImageUrl;
-  const imgAlt = isWon ? "celebration emodji" : "dead emodji";
-
   return (
     <div className={styles.modal}>
       <img className={styles.image} src={imgSrc} alt={imgAlt} />
-      {newLeader ? (
+      <Link to="/">
+        <span className={styles.link}>X</span>
+      </Link>
+      {cards.length === 6 && isWon ? (
         <>
           <h2 className={styles.title}>Вы попали на Лидерборд!</h2>
           <input
             value={username}
             onChange={handleUserNameChange}
-            placeholder={"Введите ваше имя"}
+            placeholder="Пользователь"
             className={styles.inputLeaderName}
             type="text"
           />
