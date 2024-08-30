@@ -5,6 +5,12 @@
 Проект задеплоен на gh pages:
 https://skypro-web-developer.github.io/react-memo/
 
+
+Hw1
+Ожидаемое время работы: 9 часов // Затраченное время: 15 часов
+
+
+
 ## Разработка
 
 Проект реализован на основе шаблона [Create React App](https://github.com/facebook/create-react-app).

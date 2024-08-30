@@ -67,6 +67,36 @@
   font-style: normal;
   font-weight: 400;
   line-height: 32px;
-
   margin-bottom: -12px;
+}
+
+.div {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.attempts_txt {
+    margin-top: 8px;
+    color: #fff;
+    font-family: StratosSkyeng;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+}
+.attempts_counter {
+  color: #fff;
+  font-family: StratosSkyeng;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+}
+.attempts_wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.imgSuper {
+  cursor:pointer;
 }

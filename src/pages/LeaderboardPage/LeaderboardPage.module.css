@@ -1,0 +1,129 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin: 52px 40px 15px 40px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 24px;
+  font-family: StratosSkyeng;
+  color: white;
+}
+
+.button {
+  width: 246px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #7ac100;
+  color: #fff;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #7ac100cc;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.boardNames {
+  background: white;
+  border-radius: 12px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #999999;
+  font-family: StratosSkyeng;
+  font-size: 24px;
+}
+
+.boardRating {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.boardRatingPlace {
+  background: white;
+  border-radius: 12px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #000;
+  font-family: StratosSkyeng;
+  font-size: 24px;
+}
+
+.grid {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 174px;
+  background-color: #555;
+  color: black;
+  text-align: center;
+  padding: 15px 20px 24px;
+  border-radius: 12px;
+  background-color: #C2F5FF;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -15px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 90%;
+  left: 5%;
+  margin-left: -5px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: #C2F5FF transparent transparent transparent;
+  rotate: 135deg;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}

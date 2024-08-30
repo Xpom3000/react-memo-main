@@ -1,6 +1,7 @@
 .modal {
   width: 480px;
-  height: 459px;
+  /* padding-top: 36px; */
+  padding-bottom: 48px;
   border-radius: 12px;
   background: #c2f5ff;
   display: flex;
@@ -8,11 +9,44 @@
   justify-content: center;
   align-items: center;
 }
+.buttonHome {
+  position: relative;
+  /* top: -30px; */
+  left: 225px;
+  border-radius: 12px;
+  background: transparent;
+  color: black;
+  text-align: center;
+  font-feature-settings: lining-nums proportional-nums;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 26px;
+  height: 38px;
+}
+
 
 .image {
   width: 96px;
   height: 96px;
   margin-bottom: 8px;
+}
+
+.link {
+  position: absolute;
+  top: 115px;
+  right: 575px;
+  color: #000000;
+  cursor: pointer;
+}
+link:hover {
+  color: #000000;
 }
 
 .title {
@@ -23,6 +57,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 48px;
+  text-align: center;
 
   margin-bottom: 28px;
 }
@@ -35,7 +70,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 32px;
-
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -46,6 +81,25 @@
   font-style: normal;
   font-weight: 400;
   line-height: 72px;
+  margin-bottom: 10px;
+}
 
-  margin-bottom: 40px;
+.leaderboard {
+  margin-top: 20px;
+  font-family: StratosSkyeng;
+  color: #0080c1;
+  font-size: 16px;
+}
+
+.inputLeaderName {
+  width: 276px;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  text-align: center;
+  font-family: StratosSkyeng;
+  font-weight: 400;
+  font-size: 24px;
+  /* color: #999999; */
 }
